@@ -15,6 +15,8 @@ public class PathController2 : MonoBehaviour
 
     public Animator animator;
     bool isSprinting;
+
+    bool noMoreSprinting = false;
     
 
 
@@ -67,12 +69,13 @@ public class PathController2 : MonoBehaviour
         
         isSprinting = false;
         animator.SetBool("IsSprinting", isSprinting);
+        noMoreSprinting = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.anyKeyDown)
+        if (Input.anyKeyDown && noMoreSprinting == false)
         {
             isSprinting = !isSprinting;
             
